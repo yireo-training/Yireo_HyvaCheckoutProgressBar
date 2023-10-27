@@ -15,7 +15,9 @@ class Progressbar extends Component
 
     protected $listeners = [
         'billing_address_submitted' => 'refresh',
+        'billing_address_saved' => 'refresh',
         'shipping_address_submitted' => 'refresh',
+        'shipping_address_saved' => 'refresh',
         'shipping_address_activated' => 'refresh'
     ];
 
@@ -31,7 +33,7 @@ class Progressbar extends Component
             return 0;
         }
 
-        return (int) ($this->totalCount / $this->currentCount);
+        return (int) (100 / $this->totalCount * $this->currentCount);
     }
 
     public function boot()
@@ -41,7 +43,7 @@ class Progressbar extends Component
 
     public function refresh()
     {
-        $this->collect();;
+        $this->collect();
     }
 
     private function collect()
