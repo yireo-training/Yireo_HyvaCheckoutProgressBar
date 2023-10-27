@@ -1,8 +1,6 @@
 # Yireo HyvaCheckoutProgressBar
 
-**This Magento 2 module adds a small progress bar in the top of the Hyva Checkout, that progresses for every field and step that is filled in**
-
-Current status: Not ready
+**This Magento 2 module adds a small progress bar in the top of the Hyva Checkout, that progresses for every field that is filled in. The literal progress is not shown - the numbers are not important. Instead the progress bar is only meant as a visual indicator.**
 
 ### Installation
 ```bash

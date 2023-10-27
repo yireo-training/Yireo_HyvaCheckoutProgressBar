@@ -3,11 +3,14 @@
       xsi:noNamespaceSchemaLocation="urn:magento:module:View/Layout:etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block name="checkout-progress-bar" template="Yireo_HyvaCheckoutProgressBar::progressbar.phtml" before="-">
+            <container name="checkout-progress-bar-container" before="-">
+            <block name="checkout-progress-bar" template="Yireo_HyvaCheckoutProgressBar::progressbar.phtml">
                 <arguments>
                     <argument name="magewire" xsi:type="object">Yireo\HyvaCheckoutProgressBar\Magewire\Progressbar</argument>
                 </arguments>
             </block>
+                <block name="checkout-progress-bar-js" template="Yireo_HyvaCheckoutProgressBar::progressbar-js.phtml"/>
+            </container>
         </referenceContainer>
     </body>
 </page>

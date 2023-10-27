@@ -1,0 +1,48 @@
+<?php
+declare(strict_types=1);
+?>
+<script>
+    document.addEventListener('magewire:load', () => {
+        document.getElementById('hyva-checkout-main').querySelectorAll("[required]").forEach(function (input) {
+            input.addEventListener('change', function (event) {
+                window.dispatchEvent(new CustomEvent('required-input-change', {
+                    detail: {name: event.target.name, value: event.target.value}
+                }));
+            });
+        });
+    });
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('yireoHyvaCheckoutProgressBar', () => ({
+            init(currentCount, totalCount) {
+                this.currentCount = currentCount;
+                this.totalCount = totalCount;
+            },
+            currentCount: 0,
+            totalCount: 0,
+            fieldValues: new Map(),
+            progressTitle() {
+                return this.currentCount + ' / ' + this.totalCount;
+            },
+            progressStyle() {
+                return {width: Math.ceil(100 / this.totalCount * this.currentCount) + '%'};
+            },
+            requiredInputChange(event) {
+                const fieldName = event.detail.name;
+                const fieldValue = event.detail.value;
+                if (fieldValue) {
+                    if (!this.fieldValues.get(fieldName)) {
+                        this.fieldValues.set(fieldName, fieldValue);
+                        this.currentCount++;
+                    }
+
+                    return;
+                }
+
+                if (this.fieldValues.get(fieldName)) {
+                    this.fieldValues.delete(fieldName);
+                    this.currentCount--;
+                }
+            }
+        }));
+    });
+</script>
