@@ -7,3 +7,6 @@
 composer require yireo/magento2-hyva-checkout-progress-bar
 bin/magento module:enable Yireo_HyvaCheckoutProgressBar Yireo_HyvaCheckoutUtils
 ```
+
+docs/hyva-checkout-progress-bar.mp4
+docs/hyva-checkout-progress-bar.png
